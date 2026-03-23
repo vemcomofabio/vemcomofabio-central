@@ -13,310 +13,806 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
-  --bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;
+  --bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;--bg4:#222233;
   --azul:#4f8ef7;--verde:#22c55e;--roxo:#a78bfa;
   --laranja:#fb923c;--vermelho:#f87171;--amarelo:#fbbf24;
+  --rosa:#f472b6;--ciano:#22d3ee;
   --texto:#e2e8f0;--texto2:#94a3b8;--borda:#2a2a3a;
-  --safe-top:env(safe-area-inset-top);
-  --safe-bot:env(safe-area-inset-bottom);
+  --safe-top:env(safe-area-inset-top);--safe-bot:env(safe-area-inset-bottom);
 }
 html,body{height:100%;overflow:hidden}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--texto);display:flex;flex-direction:column}
-.header{background:var(--bg2);border-bottom:1px solid var(--borda);padding:12px 16px;padding-top:calc(12px + var(--safe-top));display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+
+/* HEADER */
+.header{background:var(--bg2);border-bottom:1px solid var(--borda);padding:10px 16px;padding-top:calc(10px + var(--safe-top));display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .logo{font-size:17px;font-weight:800;background:linear-gradient(135deg,#4f8ef7,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:flex;align-items:center;gap:6px}
-.logo-sub{font-size:10px;color:var(--texto2);font-weight:400;-webkit-text-fill-color:var(--texto2)}
-.clock{font-size:12px;color:var(--texto2);background:var(--bg3);padding:4px 10px;border-radius:20px}
+.logo span{font-size:10px;color:var(--texto2);font-weight:400;-webkit-text-fill-color:var(--texto2)}
+.clock{font-size:11px;color:var(--texto2);background:var(--bg3);padding:3px 8px;border-radius:20px}
+
+/* SCROLL */
 .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.bottom-nav{background:var(--bg2);border-top:1px solid var(--borda);display:flex;padding-bottom:calc(8px + var(--safe-bot));flex-shrink:0}
-.bnav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px 8px;border:none;background:none;color:var(--texto2);font-size:10px;cursor:pointer;transition:.2s}
-.bnav-btn .icon{font-size:22px}
+
+/* BOTTOM NAV */
+.bottom-nav{background:var(--bg2);border-top:1px solid var(--borda);display:flex;padding-bottom:calc(6px + var(--safe-bot));flex-shrink:0}
+.bnav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px 6px;border:none;background:none;color:var(--texto2);font-size:9px;cursor:pointer;transition:.2s}
+.bnav-btn .icon{font-size:20px}
 .bnav-btn.active{color:var(--azul)}
-.page{display:none;padding:16px}.page.active{display:block}
-.page-title{font-size:18px;font-weight:700;margin-bottom:4px}
-.page-sub{font-size:12px;color:var(--texto2);margin-bottom:16px}
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.stat{background:var(--bg2);border:1px solid var(--borda);border-radius:12px;padding:14px;text-align:center}
-.stat-num{font-size:26px;font-weight:700}.stat-label{font-size:11px;color:var(--texto2);margin-top:3px}
+
+/* PAGES */
+.page{display:none;padding:14px}
+.page.active{display:block}
+.page-title{font-size:17px;font-weight:700;margin-bottom:3px}
+.page-sub{font-size:12px;color:var(--texto2);margin-bottom:14px}
+
+/* CARDS */
 .card{background:var(--bg2);border:1px solid var(--borda);border-radius:12px;overflow:hidden;margin-bottom:12px}
-.card-hdr{padding:12px 16px;border-bottom:1px solid var(--borda);display:flex;align-items:center;justify-content:space-between}
-.card-title{font-size:13px;font-weight:600}.card-body{padding:14px 16px}
-.viral-card{background:var(--bg3);border:1px solid var(--borda);border-radius:10px;margin-bottom:10px;overflow:hidden;cursor:pointer}
-.viral-card:active{opacity:.7}
-.viral-top{padding:12px 14px;display:flex;align-items:flex-start;gap:12px}
-.viral-plat{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.card-hdr{padding:11px 14px;border-bottom:1px solid var(--borda);display:flex;align-items:center;justify-content:space-between}
+.card-title{font-size:13px;font-weight:600}
+.card-body{padding:13px 14px}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.stat{background:var(--bg2);border:1px solid var(--borda);border-radius:12px;padding:12px;text-align:center}
+.stat-num{font-size:24px;font-weight:700}
+.stat-label{font-size:10px;color:var(--texto2);margin-top:2px}
+
+/* VIRAL CARDS */
+.viral-card{background:var(--bg3);border:1px solid var(--borda);border-radius:10px;margin-bottom:10px;overflow:hidden;cursor:pointer;transition:.15s}
+.viral-card:active{opacity:.7;transform:scale(.98)}
+.viral-top{padding:11px 13px;display:flex;align-items:flex-start;gap:11px}
+.viral-plat{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
 .viral-info{flex:1;min-width:0}
-.viral-user{font-size:12px;font-weight:600;color:var(--azul);margin-bottom:3px}
+.viral-user{font-size:11px;font-weight:700;color:var(--azul);margin-bottom:2px}
 .viral-legenda{font-size:12px;color:var(--texto2);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.viral-score{background:#1a1a2e;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;color:var(--amarelo);white-space:nowrap}
-.viral-actions{display:flex;gap:8px;padding:0 14px 12px}
-.btn{padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
-.btn:active{transform:scale(.97)}.btn-primary{background:var(--azul);color:#fff;width:100%;justify-content:center;padding:13px}
-.btn-sm{padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600;border:none;cursor:pointer}
-.btn-azul{background:var(--azul);color:#fff}.btn-roxo{background:var(--roxo);color:#fff}
-.btn-verde{background:var(--verde);color:#000}.btn-outline{background:transparent;border:1px solid var(--borda);color:var(--texto2)}
-.input{background:var(--bg3);border:1px solid var(--borda);border-radius:10px;padding:12px 14px;color:var(--texto);font-size:14px;width:100%;outline:none}
-.input:focus{border-color:var(--azul)}.select{background:var(--bg3);border:1px solid var(--borda);border-radius:10px;padding:12px 14px;color:var(--texto);font-size:14px;width:100%;outline:none}
-.label{font-size:12px;color:var(--texto2);margin-bottom:6px;display:block}.field{margin-bottom:14px}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;flex-direction:column;justify-content:flex-end}
+.viral-score{background:#1a1a2e;border-radius:20px;padding:2px 8px;font-size:11px;font-weight:700;color:var(--amarelo);white-space:nowrap}
+.viral-actions{display:flex;gap:7px;padding:0 13px 11px}
+
+/* BOTÕES */
+.btn{padding:11px 16px;border-radius:10px;font-size:13px;font-weight:600;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:.15s}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--azul);color:#fff;width:100%}
+.btn-roxo{background:var(--roxo);color:#fff;width:100%}
+.btn-verde{background:var(--verde);color:#000;width:100%}
+.btn-sm{padding:6px 13px;border-radius:20px;font-size:11px;font-weight:700;border:none;cursor:pointer}
+.btn-sm-azul{background:var(--azul);color:#fff}
+.btn-sm-roxo{background:var(--roxo);color:#fff}
+.btn-sm-verde{background:var(--verde);color:#000}
+.btn-sm-outline{background:transparent;border:1px solid var(--borda);color:var(--texto2)}
+.btn-sm-laranja{background:var(--laranja);color:#000}
+
+/* INPUTS */
+.input{background:var(--bg3);border:1px solid var(--borda);border-radius:10px;padding:11px 13px;color:var(--texto);font-size:14px;width:100%;outline:none}
+.input:focus{border-color:var(--azul)}
+.select{background:var(--bg3);border:1px solid var(--borda);border-radius:10px;padding:11px 13px;color:var(--texto);font-size:14px;width:100%;outline:none}
+.label{font-size:11px;color:var(--texto2);margin-bottom:5px;display:block;font-weight:600;letter-spacing:.3px}
+.field{margin-bottom:13px}
+
+/* TABS HORIZONTAIS */
+.htabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;padding-bottom:2px}
+.htabs::-webkit-scrollbar{display:none}
+.htab{padding:7px 14px;border-radius:20px;font-size:12px;font-weight:700;border:1px solid var(--borda);background:none;color:var(--texto2);cursor:pointer;white-space:nowrap;transition:.15s}
+.htab.active{background:var(--azul);color:#fff;border-color:var(--azul)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;display:none;flex-direction:column;justify-content:flex-end}
 .modal-overlay.open{display:flex}
-.modal{background:var(--bg2);border-radius:20px 20px 0 0;max-height:90vh;display:flex;flex-direction:column;padding-bottom:var(--safe-bot)}
-.modal-drag{width:40px;height:4px;background:var(--borda);border-radius:2px;margin:12px auto 0}
-.modal-hdr{padding:16px 20px;border-bottom:1px solid var(--borda);display:flex;justify-content:space-between;align-items:center}
-.modal-scroll{overflow-y:auto;flex:1;padding:16px 20px}.modal-close{background:none;border:none;color:var(--texto2);font-size:20px;cursor:pointer}
-.roteiro-box{background:var(--bg3);border-radius:10px;padding:14px;font-size:13px;line-height:1.8;color:var(--texto2);white-space:pre-line;margin-bottom:14px}
-.tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;margin:3px}
-.tag-azul{background:var(--azul);color:#fff}.tag-verde{background:var(--verde);color:#000}
-.tag-roxo{background:var(--roxo);color:#fff}.tag-laranja{background:var(--laranja);color:#000}
-.acao{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--borda);font-size:13px}
-.acao:last-child{border:none}
-.loading{text-align:center;padding:40px;color:var(--texto2);font-size:13px}
-.spinner{display:inline-block;width:24px;height:24px;border:2px solid var(--borda);border-top-color:var(--azul);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:12px}
+.modal{background:var(--bg2);border-radius:20px 20px 0 0;max-height:92vh;display:flex;flex-direction:column;padding-bottom:var(--safe-bot)}
+.modal-drag{width:36px;height:3px;background:var(--borda);border-radius:2px;margin:10px auto 0}
+.modal-hdr{padding:14px 18px;border-bottom:1px solid var(--borda);display:flex;justify-content:space-between;align-items:flex-start}
+.modal-scroll{overflow-y:auto;flex:1;padding:14px 18px}
+.modal-close{background:none;border:none;color:var(--texto2);font-size:20px;cursor:pointer;padding:2px;margin-top:-2px}
+
+/* COPY BOXES */
+.copy-section{margin-bottom:16px}
+.copy-label{font-size:10px;font-weight:700;color:var(--azul);letter-spacing:1px;margin-bottom:6px;text-transform:uppercase}
+.copy-box{background:var(--bg3);border-radius:8px;padding:12px;font-size:13px;line-height:1.8;color:var(--texto2);white-space:pre-line;border-left:3px solid var(--azul)}
+.copy-box.roxo{border-left-color:var(--roxo)}
+.copy-box.verde{border-left-color:var(--verde)}
+.copy-box.laranja{border-left-color:var(--laranja)}
+
+/* LOADING */
+.loading{text-align:center;padding:36px;color:var(--texto2);font-size:13px}
+.spinner{display:inline-block;width:22px;height:22px;border:2px solid var(--borda);border-top-color:var(--azul);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:10px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;padding-bottom:4px}
-.tabs::-webkit-scrollbar{display:none}
-.tab{padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--borda);background:none;color:var(--texto2);cursor:pointer;white-space:nowrap}
-.tab.active{background:var(--azul);color:#fff;border-color:var(--azul)}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--borda);border-radius:2px}
-</style></head><body>
+
+/* ACAO */
+.acao{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--borda);font-size:13px}
+.acao:last-child{border:none}
+
+/* REACT CARD */
+.react-card{background:var(--bg3);border:1px solid var(--borda);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.react-card-top{padding:12px 14px;display:flex;gap:12px;align-items:center}
+.react-thumb{width:50px;height:50px;border-radius:8px;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.react-info{flex:1;min-width:0}
+.react-num{font-size:20px;font-weight:800;color:var(--azul)}
+.react-plat{font-size:11px;color:var(--texto2);margin-top:1px}
+.react-actions{display:flex;gap:7px;padding:0 14px 12px;flex-wrap:wrap}
+
+/* TAG */
+.tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px}
+.tag-azul{background:rgba(79,142,247,.2);color:var(--azul)}
+.tag-verde{background:rgba(34,197,94,.2);color:var(--verde)}
+.tag-roxo{background:rgba(167,139,250,.2);color:var(--roxo)}
+.tag-laranja{background:rgba(251,146,60,.2);color:var(--laranja)}
+
+/* AIDA BADGE */
+.aida-badge{display:inline-flex;gap:3px;margin-bottom:10px}
+.aida-step{padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700;opacity:.5}
+.aida-step.active{opacity:1}
+.a1{background:rgba(79,142,247,.3);color:var(--azul)}
+.a2{background:rgba(251,146,60,.3);color:var(--laranja)}
+.a3{background:rgba(167,139,250,.3);color:var(--roxo)}
+.a4{background:rgba(34,197,94,.3);color:var(--verde)}
+
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--borda);border-radius:2px}
+</style>
+</head>
+<body>
 
 <div class="header">
-  <div class="logo">⚡ Reactify<span class="logo-sub"> &nbsp;Sua Máquina de Virais</span></div>
+  <div class="logo">⚡ Reactify<span>  Sua Máquina de Virais</span></div>
   <div class="clock" id="clock">--:--</div>
 </div>
+
 <div class="scroll" id="main-scroll">
-  <div class="page active" id="page-dashboard">
-    <div class="stats-grid">
-      <div class="stat"><div class="stat-num" style="color:var(--azul)">870</div><div class="stat-label">Vídeos organizados</div></div>
-      <div class="stat"><div class="stat-num" style="color:var(--verde)">3x</div><div class="stat-label">Buscas por dia</div></div>
-      <div class="stat"><div class="stat-num" style="color:var(--roxo)" id="stat-virais">0</div><div class="stat-label">Virais hoje</div></div>
-      <div class="stat"><div class="stat-num" style="color:var(--amarelo)">2</div><div class="stat-label">Vídeos por dia</div></div>
+
+<!-- ═══ DASHBOARD ═══ -->
+<div class="page active" id="page-dashboard">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num" style="color:var(--azul)">870</div><div class="stat-label">Vídeos organizados</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--verde)" id="stat-virais">0</div><div class="stat-label">Virais hoje</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--roxo)">3x</div><div class="stat-label">Buscas automáticas</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--amarelo)">2</div><div class="stat-label">Vídeos/dia</div></div>
+  </div>
+  <div class="card">
+    <div class="card-hdr"><span class="card-title">✅ Ações de hoje</span></div>
+    <div class="card-body">
+      <div class="acao"><span style="color:var(--verde)">✓</span><span>870 vídeos organizados no Drive</span></div>
+      <div class="acao"><span style="color:var(--verde)">✓</span><span>Bot Telegram ativo</span></div>
+      <div class="acao"><span style="color:var(--verde)">✓</span><span>Agendamento 3x/dia configurado</span></div>
+      <div class="acao"><span style="color:var(--amarelo)">○</span><span>Ver virais e escolher react</span></div>
+      <div class="acao"><span style="color:var(--amarelo)">○</span><span>Gerar roteiro do dia</span></div>
+      <div class="acao"><span style="color:var(--amarelo)">○</span><span>Gravar 5 reacts Facebook</span></div>
     </div>
-    <div class="card">
-      <div class="card-hdr"><span class="card-title">✅ Ações de hoje</span></div>
-      <div class="card-body">
-        <div class="acao"><span style="color:var(--verde)">✓</span><span>870 vídeos organizados no Drive</span></div>
-        <div class="acao"><span style="color:var(--verde)">✓</span><span>Agendamento 3x/dia ativo</span></div>
-        <div class="acao"><span style="color:var(--amarelo)">○</span><span>Buscar virais do dia</span></div>
-        <div class="acao"><span style="color:var(--amarelo)">○</span><span>Gerar roteiro Instagram</span></div>
-        <div class="acao"><span style="color:var(--amarelo)">○</span><span>Gravar 2 vídeos Instagram</span></div>
-        <div class="acao"><span style="color:var(--amarelo)">○</span><span>Gravar 5 reacts Facebook</span></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-hdr"><span class="card-title">📅 Automático hoje</span></div>
-      <div class="card-body">
-        <div class="acao"><span style="color:var(--verde)">●</span><span><b>06:00</b> — Briefing + Agentes</span></div>
-        <div class="acao"><span style="color:var(--verde)">●</span><span><b>07:00</b> — Notificação de virais</span></div>
-        <div class="acao"><span style="color:var(--verde)">●</span><span><b>14:00</b> — Agentes (tarde)</span></div>
-        <div class="acao"><span style="color:var(--verde)">●</span><span><b>21:00</b> — Agentes (noite)</span></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-hdr"><span class="card-title">🎯 Estratégia da semana</span></div>
-      <div class="card-body" style="font-size:13px;color:var(--texto2);line-height:1.8">
-        <div><b style="color:var(--azul)">Vídeo 1</b> — React puro (mantém alcance)</div>
-        <div><b style="color:var(--roxo)">Vídeo 2</b> — Conteúdo dirigido:</div>
-        <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">
-          <span class="tag tag-azul">A: Virada pessoal</span>
-          <span class="tag tag-verde">B: Você falando</span>
-          <span class="tag tag-roxo">C: Prova social</span>
-          <span class="tag tag-laranja">D: Autoridade</span>
-        </div>
+  </div>
+  <div class="card">
+    <div class="card-hdr"><span class="card-title">🎯 Estratégia AIDA da semana</span></div>
+    <div class="card-body" style="font-size:13px;color:var(--texto2);line-height:1.8">
+      <div><b style="color:var(--azul)">Vídeo 1</b> — React puro (mantém alcance)</div>
+      <div><b style="color:var(--roxo)">Vídeo 2</b> — Conteúdo dirigido com AIDA:</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px">
+        <span class="tag tag-azul">A: Atenção — React chocante</span>
+        <span class="tag tag-laranja">I: Interesse — Você se identifica?</span>
+        <span class="tag tag-roxo">D: Desejo — Resultado possível</span>
+        <span class="tag tag-verde">A: Ação — CTA natural</span>
       </div>
     </div>
   </div>
-  <div class="page" id="page-virais">
-    <div class="page-title">🔥 Virais do Dia</div>
-    <div class="page-sub">Clique em qualquer vídeo para gerar o roteiro</div>
-    <div class="tabs">
-      <button class="tab active" onclick="filtrarPlat('todos',this)">Todos</button>
-      <button class="tab" onclick="filtrarPlat('instagram',this)">📷 Insta</button>
-      <button class="tab" onclick="filtrarPlat('tiktok',this)">🎵 TikTok</button>
-      <button class="tab" onclick="filtrarPlat('youtube_shorts',this)">▶️ YouTube</button>
-      <button class="tab" onclick="filtrarPlat('facebook',this)">📘 Facebook</button>
+  <div class="card">
+    <div class="card-hdr"><span class="card-title">📅 Automático hoje</span></div>
+    <div class="card-body">
+      <div class="acao"><span style="color:var(--verde)">●</span><span><b>06:00</b> — Briefing + Agentes</span></div>
+      <div class="acao"><span style="color:var(--verde)">●</span><span><b>14:00</b> — Agentes tarde</span></div>
+      <div class="acao"><span style="color:var(--verde)">●</span><span><b>21:00</b> — Agentes noite</span></div>
     </div>
-    <div id="virais-list"></div>
   </div>
-  <div class="page" id="page-roteiros">
-    <div class="page-title">✍️ Roteiros</div>
-    <div class="page-sub">Gere roteiros virais com IA</div>
-    <div class="field"><label class="label">Tipo de vídeo</label>
-      <select class="select" id="tipo-rot">
-        <option value="A">A — React com virada pessoal</option>
-        <option value="B">B — Você falando (câmera)</option>
-        <option value="C">C — Prova social / resultado</option>
-        <option value="D">D — React com autoridade</option>
+</div>
+
+<!-- ═══ VIRAIS ═══ -->
+<div class="page" id="page-virais">
+  <div class="page-title">🔥 Virais do Dia</div>
+  <div class="page-sub">Toque para ver o vídeo e escolher o react</div>
+  <div class="htabs">
+    <button class="htab active" onclick="filtrarPlat('todos',this)">Todos</button>
+    <button class="htab" onclick="filtrarPlat('instagram',this)">📷 Insta</button>
+    <button class="htab" onclick="filtrarPlat('tiktok',this)">🎵 TikTok</button>
+    <button class="htab" onclick="filtrarPlat('youtube_shorts',this)">▶️ YouTube</button>
+    <button class="htab" onclick="filtrarPlat('facebook',this)">📘 Facebook</button>
+  </div>
+  <div id="virais-list"></div>
+</div>
+
+<!-- ═══ COPY ═══ -->
+<div class="page" id="page-copy">
+  <div class="page-title">✍️ Copy com AIDA</div>
+  <div class="page-sub">Atenção → Interesse → Desejo → Ação</div>
+  <div class="htabs">
+    <button class="htab active" onclick="showCopyTab('reels',this)">🎬 Reels</button>
+    <button class="htab" onclick="showCopyTab('stories',this)">📱 Stories</button>
+    <button class="htab" onclick="showCopyTab('criativos',this)">💰 Criativos</button>
+  </div>
+  <!-- REELS -->
+  <div id="copy-reels">
+    <div class="aida-badge">
+      <span class="aida-step a1 active">A</span>
+      <span class="aida-step a2 active">I</span>
+      <span class="aida-step a3 active">D</span>
+      <span class="aida-step a4 active">A</span>
+      <span style="font-size:11px;color:var(--texto2);margin-left:4px;align-self:center">Framework aplicado</span>
+    </div>
+    <div class="field"><label class="label">Tipo de Reel</label>
+      <select class="select" id="tipo-reel">
+        <option value="A">A — React + virada pessoal (sua história)</option>
+        <option value="B">B — Você falando direto na câmera</option>
+        <option value="C">C — Prova social (resultado de aluno)</option>
+        <option value="D">D — React ensinando com autoridade</option>
       </select>
     </div>
     <div class="field"><label class="label">Tema do vídeo</label>
-      <input class="input" id="tema-rot" placeholder="Ex: como crescer no Instagram...">
+      <input class="input" id="tema-reel" placeholder="Ex: crescer no Instagram sem aparecer...">
     </div>
-    <div class="field"><label class="label">Produto (opcional)</label>
-      <select class="select" id="prod-rot">
+    <div class="field"><label class="label">Produto a promover</label>
+      <select class="select" id="prod-reel">
         <option value="">Nenhum — conteúdo puro</option>
         <option value="React Viral (R$97)">React Viral — R$97</option>
         <option value="Guia dos Vídeos Lucrativos">Guia dos Vídeos Lucrativos</option>
         <option value="Vídeos sem Aparecer">Vídeos sem Aparecer</option>
       </select>
     </div>
-    <button class="btn btn-primary" onclick="gerarRoteiro()">✨ Gerar roteiro com IA</button>
-    <div id="roteiro-resultado" style="margin-top:16px"></div>
+    <button class="btn btn-primary" onclick="gerarCopy('reel')">⚡ Gerar roteiro com AIDA</button>
+    <div id="resultado-reel" style="margin-top:14px"></div>
   </div>
-  <div class="page" id="page-briefing">
-    <div class="page-title">📊 Briefing</div>
-    <div class="page-sub">Notícias e tendências do seu nicho</div>
-    <button class="btn btn-primary" onclick="gerarBriefing()" style="margin-bottom:16px">🔄 Gerar briefing de hoje</button>
-    <div id="briefing-resultado"></div>
-  </div>
-  <div class="page" id="page-config">
-    <div class="page-title">⚙️ Configurações</div>
-    <div class="page-sub">Chave API e preferências</div>
-    <div class="card">
-      <div class="card-hdr"><span class="card-title">🔑 Chave API Anthropic</span></div>
-      <div class="card-body">
-        <div class="field"><label class="label">Cole sua chave sk-ant-...</label>
-          <input class="input" id="input-key" type="password" placeholder="sk-ant-...">
-        </div>
-        <button class="btn btn-primary" onclick="salvarChave()">Salvar chave</button>
-        <div id="key-status" style="font-size:12px;color:var(--verde);margin-top:10px;text-align:center"></div>
-      </div>
+  <!-- STORIES -->
+  <div id="copy-stories" style="display:none">
+    <div class="aida-badge">
+      <span class="aida-step a1 active">A</span>
+      <span class="aida-step a2 active">I</span>
+      <span class="aida-step a3 active">D</span>
+      <span class="aida-step a4 active">A</span>
+      <span style="font-size:11px;color:var(--texto2);margin-left:4px;align-self:center">Storytelling viciante</span>
     </div>
-    <div class="card">
-      <div class="card-hdr"><span class="card-title">📱 Instalar o Reactify como App</span></div>
-      <div class="card-body" style="font-size:13px;color:var(--texto2);line-height:1.8">
-        <div><b style="color:var(--texto)">iPhone:</b> Compartilhar → Adicionar à Tela de Início</div>
-        <div><b style="color:var(--texto)">Android:</b> Menu Chrome → Adicionar à tela inicial</div>
+    <div class="field"><label class="label">Objetivo dos stories</label>
+      <select class="select" id="obj-stories">
+        <option value="conexao">Conexão e humanização (bastidores)</option>
+        <option value="autoridade">Autoridade (resultados, aprendizados)</option>
+        <option value="aquecimento">Aquecimento para venda</option>
+        <option value="conversao">Conversão direta (vender)</option>
+        <option value="engajamento">Engajamento (enquetes, DMs)</option>
+      </select>
+    </div>
+    <div class="field"><label class="label">Tema/assunto</label>
+      <input class="input" id="tema-stories" placeholder="Ex: como fui de 0 a 1 milhão...">
+    </div>
+    <div class="field"><label class="label">Nº de stories (3 a 8)</label>
+      <select class="select" id="num-stories">
+        <option value="3">3 stories</option>
+        <option value="5" selected>5 stories</option>
+        <option value="7">7 stories</option>
+        <option value="8">8 stories</option>
+      </select>
+    </div>
+    <button class="btn btn-roxo" onclick="gerarCopy('stories')">⚡ Gerar sequência com AIDA</button>
+    <div id="resultado-stories" style="margin-top:14px"></div>
+  </div>
+  <!-- CRIATIVOS -->
+  <div id="copy-criativos" style="display:none">
+    <div class="aida-badge">
+      <span class="aida-step a1 active">A</span>
+      <span class="aida-step a2 active">I</span>
+      <span class="aida-step a3 active">D</span>
+      <span class="aida-step a4 active">A</span>
+      <span style="font-size:11px;color:var(--texto2);margin-left:4px;align-self:center">Direto ao resultado</span>
+    </div>
+    <div class="field"><label class="label">Produto</label>
+      <select class="select" id="prod-cri">
+        <option value="React Viral (R$97)">React Viral — R$97</option>
+        <option value="Guia dos Vídeos Lucrativos">Guia dos Vídeos Lucrativos</option>
+        <option value="Vídeos sem Aparecer">Vídeos sem Aparecer</option>
+      </select>
+    </div>
+    <div class="field"><label class="label">Ângulo do criativo</label>
+      <select class="select" id="angulo-cri">
+        <option value="dor">Dor — foca no problema do público</option>
+        <option value="sonho">Sonho — foca no resultado desejado</option>
+        <option value="medo">Medo — quebra objeção principal</option>
+        <option value="prova">Prova social — resultado real</option>
+        <option value="urgencia">Urgência — prazo ou vagas</option>
+      </select>
+    </div>
+    <div class="field"><label class="label">Prova social disponível (opcional)</label>
+      <input class="input" id="prova-cri" placeholder="Ex: 127 alunos, R$50k em 30 dias...">
+    </div>
+    <button class="btn btn-verde" onclick="gerarCopy('criativo')">⚡ Gerar criativo que converte</button>
+    <div id="resultado-criativo" style="margin-top:14px"></div>
+  </div>
+</div>
+
+<!-- ═══ REAGIR ═══ -->
+<div class="page" id="page-reagir">
+  <div class="page-title">🎬 Escolher React</div>
+  <div class="page-sub">Selecione o vídeo e comece a criar</div>
+  <div class="htabs">
+    <button class="htab active" onclick="showReactTab('todos',this)">Todos</button>
+    <button class="htab" onclick="showReactTab('instagram',this)">Instagram</button>
+    <button class="htab" onclick="showReactTab('facebook',this)">Facebook</button>
+    <button class="htab" onclick="showReactTab('tiktok',this)">TikTok</button>
+  </div>
+  <div id="react-list"></div>
+</div>
+
+<!-- ═══ CONFIG ═══ -->
+<div class="page" id="page-config">
+  <div class="page-title">⚙️ Configurações</div>
+  <div class="page-sub">Chave API e preferências</div>
+  <div class="card">
+    <div class="card-hdr"><span class="card-title">🔑 Chave API Anthropic</span></div>
+    <div class="card-body">
+      <div class="field"><label class="label">Cole sua chave sk-ant-...</label>
+        <input class="input" id="input-key" type="password" placeholder="sk-ant-...">
       </div>
+      <button class="btn btn-primary" onclick="salvarChave()">Salvar chave</button>
+      <div id="key-status" style="font-size:12px;color:var(--verde);margin-top:8px;text-align:center"></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-hdr"><span class="card-title">📱 Instalar o Reactify</span></div>
+    <div class="card-body" style="font-size:13px;color:var(--texto2);line-height:1.8">
+      <div><b style="color:var(--texto)">iPhone:</b> Compartilhar → Adicionar à Tela de Início</div>
+      <div><b style="color:var(--texto)">Android:</b> Menu Chrome → Adicionar à tela inicial</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-hdr"><span class="card-title">🤖 Bot Telegram</span></div>
+    <div class="card-body" style="font-size:13px;color:var(--texto2);line-height:1.8">
+      <div>Bot: <b style="color:var(--azul)">@reactify_vemco_bot</b></div>
+      <div>Mande links para baixar automaticamente</div>
+      <div>Comandos: /start /status /zerar</div>
     </div>
   </div>
 </div>
 
+</div><!-- end scroll -->
+
+<!-- BOTTOM NAV -->
 <div class="bottom-nav">
   <button class="bnav-btn active" onclick="showPage('dashboard',this)"><div class="icon">🏠</div>Início</button>
   <button class="bnav-btn" onclick="showPage('virais',this)"><div class="icon">🔥</div>Virais</button>
-  <button class="bnav-btn" onclick="showPage('roteiros',this)"><div class="icon">✍️</div>Roteiros</button>
-  <button class="bnav-btn" onclick="showPage('briefing',this)"><div class="icon">📊</div>Briefing</button>
+  <button class="bnav-btn" onclick="showPage('copy',this)"><div class="icon">✍️</div>Copy</button>
+  <button class="bnav-btn" onclick="showPage('reagir',this)"><div class="icon">🎬</div>Reagir</button>
   <button class="bnav-btn" onclick="showPage('config',this)"><div class="icon">⚙️</div>Config</button>
 </div>
+
+<!-- MODAL VIRAL -->
 <div class="modal-overlay" id="modal-viral">
   <div class="modal">
     <div class="modal-drag"></div>
     <div class="modal-hdr">
       <div>
-        <div id="modal-user" style="font-size:15px;font-weight:700"></div>
-        <div id="modal-plat" style="font-size:12px;color:var(--texto2)"></div>
+        <div id="mv-user" style="font-size:15px;font-weight:700"></div>
+        <div id="mv-plat" style="font-size:11px;color:var(--texto2);margin-top:2px"></div>
       </div>
-      <button class="modal-close" onclick="fecharModal()">✕</button>
+      <button class="modal-close" onclick="fecharModal('modal-viral')">✕</button>
     </div>
     <div class="modal-scroll">
-      <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
-        <a id="modal-link" href="#" target="_blank" class="btn-sm btn-azul">Ver vídeo →</a>
-        <button class="btn-sm btn-roxo" onclick="gerarRoteiroViral()">✨ Gerar roteiro</button>
+      <div id="mv-legenda" style="font-size:13px;color:var(--texto2);background:var(--bg3);border-radius:8px;padding:12px;margin-bottom:14px;line-height:1.6"></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+        <a id="mv-link" href="#" target="_blank" class="btn-sm btn-sm-azul">👁️ Ver original</a>
+        <button class="btn-sm btn-sm-laranja" onclick="reagirAgora()">🎬 Reagir agora</button>
+        <button class="btn-sm btn-sm-roxo" onclick="gerarRoteiroViral()">✨ Gerar roteiro</button>
       </div>
-      <div id="modal-legenda" style="font-size:13px;color:var(--texto2);background:var(--bg3);border-radius:8px;padding:12px;margin-bottom:14px;line-height:1.6"></div>
-      <div id="modal-roteiro"></div>
+      <div id="mv-roteiro"></div>
     </div>
   </div>
 </div>
+
+<!-- MODAL REACT -->
+<div class="modal-overlay" id="modal-react">
+  <div class="modal">
+    <div class="modal-drag"></div>
+    <div class="modal-hdr">
+      <div id="mr-titulo" style="font-size:15px;font-weight:700"></div>
+      <button class="modal-close" onclick="fecharModal('modal-react')">✕</button>
+    </div>
+    <div class="modal-scroll">
+      <div id="mr-body"></div>
+    </div>
+  </div>
+</div>
+
 <script>
-let apiKey=localStorage.getItem('api_key')||'';
-let viralAtual=null;
-const ICONES={instagram:'📷',tiktok:'🎵',youtube_shorts:'▶️',facebook:'📘'};
-const CORES={instagram:'#e1306c',tiktok:'#69c9d0',youtube_shorts:'#ff0000',facebook:'#1877f2'};
-const VIRAIS_DEMO=[
-  {url:'https://instagram.com',plataforma:'instagram',username:'oneyaraujo',legenda:'Como viralizar no Instagram em 2026 sem gastar nada e crescer todos os dias',score:9},
-  {url:'https://tiktok.com',plataforma:'tiktok',username:'rafabri7o',legenda:'Funil de stories que aumentou minhas vendas em 10x sem investir em tráfego pago',score:8},
-  {url:'https://youtube.com',plataforma:'youtube_shorts',username:'jefdicastech',legenda:'Essa função secreta do Instagram que ninguém usa para crescer rápido e viralizar',score:7},
-  {url:'https://facebook.com',plataforma:'facebook',username:'islam.sousa',legenda:'Dica de tecnologia que vai mudar sua vida e seus negócios online para sempre',score:8},
-  {url:'https://instagram.com',plataforma:'instagram',username:'dailton_rolim',legenda:'Cresci 100k seguidores fazendo isso todo dia durante apenas 3 meses',score:9},
+// ═══════════════════════════════════════════
+// ESTADO
+// ═══════════════════════════════════════════
+let apiKey = localStorage.getItem('api_key') || '';
+let viralAtual = null;
+const ICONES = {instagram:'📷',tiktok:'🎵',youtube_shorts:'▶️',facebook:'📘'};
+const CORES  = {instagram:'#e1306c',tiktok:'#69c9d0',youtube_shorts:'#ff0000',facebook:'#1877f2'};
+
+const VIRAIS_DEMO = [
+  {url:'https://www.instagram.com/reel/exemplo1',plataforma:'instagram',username:'oneyaraujo',legenda:'Como viralizar no Instagram em 2026 sem gastar nada e crescer todos os dias organicamente com consistência',score:9},
+  {url:'https://www.tiktok.com/@rafabri7o',plataforma:'tiktok',username:'rafabri7o',legenda:'Funil de stories que aumentou minhas vendas em 10x sem investir um centavo em tráfego pago',score:8},
+  {url:'https://www.youtube.com/shorts/exemplo',plataforma:'youtube_shorts',username:'jefdicastech',legenda:'Essa função secreta do Instagram que ninguém usa para crescer rápido e viralizar todo dia',score:7},
+  {url:'https://www.facebook.com/watch/exemplo',plataforma:'facebook',username:'islam.sousa',legenda:'Dica de tecnologia que vai transformar sua vida e seus negócios online para sempre a partir de hoje',score:8},
+  {url:'https://www.instagram.com/reel/exemplo2',plataforma:'instagram',username:'dailton_rolim',legenda:'Cresci 100k seguidores fazendo isso todo dia durante apenas 3 meses seguidos sem parar',score:9},
 ];
-let viraisAtivos=[...VIRAIS_DEMO];
-setInterval(()=>{document.getElementById('clock').textContent=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});},1000);
-function showPage(page,btn){
+let viraisAtivos = [...VIRAIS_DEMO];
+let reactTab = 'todos';
+
+// ═══════════════════════════════════════════
+// RELÓGIO
+// ═══════════════════════════════════════════
+setInterval(()=>{
+  document.getElementById('clock').textContent =
+    new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+},1000);
+
+// ═══════════════════════════════════════════
+// NAVEGAÇÃO
+// ═══════════════════════════════════════════
+function showPage(page, btn) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.bnav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('page-'+page).classList.add('active');
-  if(btn)btn.classList.add('active');
-  document.getElementById('main-scroll').scrollTop=0;
-  if(page==='virais')renderVirais(viraisAtivos);
+  if(btn) btn.classList.add('active');
+  document.getElementById('main-scroll').scrollTop = 0;
+  if(page==='virais') renderVirais(viraisAtivos);
+  if(page==='reagir') renderReact(viraisAtivos);
 }
-function renderVirais(lista){
-  document.getElementById('stat-virais').textContent=lista.length;
-  const div=document.getElementById('virais-list');
-  if(!lista.length){div.innerHTML='<div class="loading">Nenhum viral encontrado</div>';return;}
-  div.innerHTML=lista.map(v=>`<div class="viral-card" onclick="abrirViral(${JSON.stringify(v).replace(/"/g,'&quot;')})">
-    <div class="viral-top">
-      <div class="viral-plat" style="background:${CORES[v.plataforma]}22">${ICONES[v.plataforma]||'🎬'}</div>
-      <div class="viral-info"><div class="viral-user">@${v.username} · ${(v.plataforma||'').toUpperCase()}</div>
-      <div class="viral-legenda">${v.legenda||'(sem legenda)'}</div></div>
-      <div class="viral-score">🔥${v.score}</div>
-    </div>
-    <div class="viral-actions">
-      <button class="btn-sm btn-roxo" onclick="event.stopPropagation();abrirViral(${JSON.stringify(v).replace(/"/g,'&quot;')})">✨ Roteiro</button>
-      <button class="btn-sm btn-outline" onclick="event.stopPropagation();window.open('${v.url}','_blank')">Ver →</button>
-    </div></div>`).join('');
+
+function showCopyTab(tab, btn) {
+  ['reels','stories','criativos'].forEach(t=>{
+    document.getElementById('copy-'+t).style.display = t===tab?'block':'none';
+  });
+  document.querySelectorAll('#page-copy .htab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
 }
-function filtrarPlat(plat,btn){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');
+
+function showReactTab(tab, btn) {
+  reactTab = tab;
+  document.querySelectorAll('#page-reagir .htab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtrados = tab==='todos' ? viraisAtivos : viraisAtivos.filter(v=>v.plataforma===tab);
+  renderReact(filtrados);
+}
+
+// ═══════════════════════════════════════════
+// VIRAIS
+// ═══════════════════════════════════════════
+function renderVirais(lista) {
+  document.getElementById('stat-virais').textContent = lista.length;
+  const div = document.getElementById('virais-list');
+  if(!lista.length){
+    div.innerHTML='<div class="loading">Nenhum viral encontrado</div>';return;
+  }
+  div.innerHTML = lista.map(v=>`
+    <div class="viral-card" onclick="abrirViral(${JSON.stringify(v).replace(/"/g,'&quot;')})">
+      <div class="viral-top">
+        <div class="viral-plat" style="background:${CORES[v.plataforma]}22">${ICONES[v.plataforma]||'🎬'}</div>
+        <div class="viral-info">
+          <div class="viral-user">@${v.username} · ${(v.plataforma||'').toUpperCase()}</div>
+          <div class="viral-legenda">${v.legenda||'(sem legenda)'}</div>
+        </div>
+        <div class="viral-score">🔥${v.score}</div>
+      </div>
+      <div class="viral-actions">
+        <button class="btn-sm btn-sm-azul" onclick="event.stopPropagation();window.open('${v.url}','_blank')">👁️ Ver</button>
+        <button class="btn-sm btn-sm-laranja" onclick="event.stopPropagation();abrirViral(${JSON.stringify(v).replace(/"/g,'&quot;')});reagirAgora()">🎬 Reagir</button>
+        <button class="btn-sm btn-sm-roxo" onclick="event.stopPropagation();abrirViral(${JSON.stringify(v).replace(/"/g,'&quot;')})">✨ Roteiro</button>
+      </div>
+    </div>`).join('');
+}
+
+function filtrarPlat(plat, btn) {
+  document.querySelectorAll('#page-virais .htab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
   renderVirais(plat==='todos'?viraisAtivos:viraisAtivos.filter(v=>v.plataforma===plat));
 }
-function abrirViral(v){
-  viralAtual=typeof v==='string'?JSON.parse(v):v;
-  document.getElementById('modal-user').textContent='@'+viralAtual.username;
-  document.getElementById('modal-plat').textContent=`${ICONES[viralAtual.plataforma]} ${viralAtual.plataforma} · Score ${viralAtual.score}/10`;
-  document.getElementById('modal-link').href=viralAtual.url;
-  document.getElementById('modal-legenda').textContent=viralAtual.legenda||'(sem legenda)';
-  document.getElementById('modal-roteiro').innerHTML='<div style="font-size:13px;color:var(--texto2);text-align:center;padding:20px">Toque em ✨ Gerar roteiro</div>';
+
+// ═══════════════════════════════════════════
+// REAGIR
+// ═══════════════════════════════════════════
+function renderReact(lista) {
+  const div = document.getElementById('react-list');
+  if(!lista.length){div.innerHTML='<div class="loading">Nenhum vídeo encontrado</div>';return;}
+  div.innerHTML = lista.map((v,i)=>`
+    <div class="react-card">
+      <div class="react-card-top">
+        <div class="react-thumb">${ICONES[v.plataforma]||'🎬'}</div>
+        <div class="react-info">
+          <div class="react-num" style="color:${CORES[v.plataforma]||'var(--azul)'}">#${String(i+1).padStart(3,'0')}</div>
+          <div style="font-size:12px;color:var(--texto2);margin-top:2px">@${v.username}</div>
+          <div style="font-size:11px;color:var(--texto2);margin-top:2px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden">${v.legenda||''}</div>
+        </div>
+        <div class="viral-score" style="align-self:flex-start">🔥${v.score}</div>
+      </div>
+      <div class="react-actions">
+        <a href="${v.url}" target="_blank" class="btn-sm btn-sm-azul">👁️ Ver original</a>
+        <button class="btn-sm btn-sm-laranja" onclick="abrirReact(${JSON.stringify(v).replace(/"/g,'&quot;')})">🎬 Reagir agora</button>
+        <button class="btn-sm btn-sm-roxo" onclick="abrirViral(${JSON.stringify(v).replace(/"/g,'&quot;')});gerarRoteiroViral()">✨ Roteiro AIDA</button>
+      </div>
+    </div>`).join('');
+}
+
+function abrirReact(v) {
+  viralAtual = typeof v==='string'?JSON.parse(v):v;
+  document.getElementById('mr-titulo').textContent = 'Reagir: @'+viralAtual.username;
+  document.getElementById('mr-body').innerHTML = `
+    <div style="margin-bottom:16px">
+      <a href="${viralAtual.url}" target="_blank" class="btn btn-primary" style="margin-bottom:10px">
+        👁️ Abrir vídeo original para assistir
+      </a>
+      <p style="font-size:13px;color:var(--texto2);text-align:center;margin:8px 0">Assista o vídeo acima, depois grave seu react!</p>
+    </div>
+    <div style="background:var(--bg3);border-radius:10px;padding:14px;margin-bottom:14px">
+      <div style="font-size:11px;color:var(--azul);font-weight:700;margin-bottom:8px;letter-spacing:.5px">DICAS PARA O REACT</div>
+      <div style="font-size:13px;color:var(--texto2);line-height:1.8">
+        📍 Coloque o vídeo original no fundo<br>
+        📍 Você pequeno no canto direito inferior<br>
+        📍 Reaja nos momentos mais fortes<br>
+        📍 Conecte com sua história no final<br>
+        📍 CTA natural sem forçar
+      </div>
+    </div>
+    <button class="btn btn-roxo" onclick="fecharModal('modal-react');abrirViral(${JSON.stringify(viralAtual).replace(/"/g,'&quot;')});setTimeout(gerarRoteiroViral,100)">
+      ✨ Gerar roteiro AIDA para este react
+    </button>`;
+  document.getElementById('modal-react').classList.add('open');
+}
+
+// ═══════════════════════════════════════════
+// MODAL VIRAL
+// ═══════════════════════════════════════════
+function abrirViral(v) {
+  viralAtual = typeof v==='string'?JSON.parse(v):v;
+  document.getElementById('mv-user').textContent = '@'+viralAtual.username;
+  document.getElementById('mv-plat').textContent = `${ICONES[viralAtual.plataforma]} ${viralAtual.plataforma.toUpperCase()} · Score ${viralAtual.score}/10`;
+  document.getElementById('mv-link').href = viralAtual.url;
+  document.getElementById('mv-legenda').textContent = viralAtual.legenda||'(sem legenda)';
+  document.getElementById('mv-roteiro').innerHTML = '<div style="font-size:13px;color:var(--texto2);text-align:center;padding:16px">Toque em ✨ Gerar roteiro para criar com AIDA</div>';
   document.getElementById('modal-viral').classList.add('open');
 }
-function fecharModal(){document.getElementById('modal-viral').classList.remove('open');}
-async function claude(prompt){
-  if(!apiKey){showPage('config',document.querySelector('.bnav-btn:last-child'));alert('Configure sua chave API em Config!');return null;}
-  try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version': '2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,messages:[{role:'user',content:prompt}]})});
-    const d=await r.json();if(d.error)throw new Error(d.error.message);return d.content?.[0]?.text||'';
-  }catch(e){return '❌ Erro: '+e.message;}
+
+function reagirAgora() {
+  if(!viralAtual) return;
+  fecharModal('modal-viral');
+  setTimeout(()=>abrirReact(viralAtual), 200);
 }
-async function gerarRoteiroViral(){
-  if(!viralAtual)return;
-  document.getElementById('modal-roteiro').innerHTML='<div class="loading"><div class="spinner"></div><br>Gerando roteiro...</div>';
-  const texto=await claude(`Crie roteiro completo para @vemcomofabio:\nVÍDEO: ${viralAtual.plataforma} @${viralAtual.username}\nLEGENDA: ${viralAtual.legenda}\nPERFIL: 2,2M seg, ex-CLT, 1M em 5 meses, ginasta\nGere: gancho 0-3s, script completo, legenda com hashtags, dica CapCut`);
-  if(!texto)return;
-  document.getElementById('modal-roteiro').innerHTML=`<div class="roteiro-box">${texto}</div><button class="btn btn-verde" style="width:100%" onclick="navigator.clipboard.writeText(document.querySelector('.roteiro-box').textContent).then(()=>alert('Copiado!'))">📋 Copiar roteiro</button>`;
+
+function fecharModal(id) {
+  document.getElementById(id).classList.remove('open');
 }
-async function gerarRoteiro(){
-  const tipo=document.getElementById('tipo-rot').value,tema=document.getElementById('tema-rot').value.trim(),prod=document.getElementById('prod-rot').value;
-  if(!tema){alert('Digite o tema!');return;}
-  const div=document.getElementById('roteiro-resultado');
-  div.innerHTML='<div class="loading"><div class="spinner"></div><br>Gerando...</div>';
-  const texto=await claude(`Roteiro Tipo ${tipo} para @vemcomofabio\nTema: ${tema}\nProduto: ${prod||'nenhum'}\nPerfil: 2,2M seg, ex-CLT, ginasta, 1M em 5 meses\nScript fala por fala, legenda com hashtags, dica CapCut`);
-  if(!texto)return;
-  div.innerHTML=`<div class="card"><div class="card-hdr"><span class="card-title">✅ Roteiro Tipo ${tipo}</span><button class="btn-sm btn-verde" onclick="navigator.clipboard.writeText(this.closest('.card').querySelector('.roteiro-box').textContent).then(()=>alert('Copiado!'))">Copiar</button></div><div class="card-body"><div class="roteiro-box">${texto}</div></div></div>`;
+
+// ═══════════════════════════════════════════
+// API CLAUDE
+// ═══════════════════════════════════════════
+async function claude(prompt) {
+  if(!apiKey){
+    showPage('config', document.querySelector('.bnav-btn:last-child'));
+    alert('Configure sua chave API em Config!');
+    return null;
+  }
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key':apiKey,
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:2500,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const d = await r.json();
+    if(d.error) throw new Error(d.error.message);
+    return d.content?.[0]?.text || '';
+  } catch(e) {
+    return '❌ Erro: '+e.message;
+  }
 }
-async function gerarBriefing(){
-  const div=document.getElementById('briefing-resultado');
-  div.innerHTML='<div class="loading"><div class="spinner"></div><br>Buscando tendências...</div>';
-  const texto=await claude(`Briefing para @vemcomofabio - ${new Date().toLocaleDateString('pt-BR')}\nNicho: crescimento digital, Instagram, renda online\n5 trending BR para react, 3 temas educacionais, 8 ideias de vídeo com gancho e CTA`);
-  if(!texto)return;
-  div.innerHTML=`<div class="card"><div class="card-hdr"><span class="card-title">📊 ${new Date().toLocaleDateString('pt-BR')}</span><button class="btn-sm btn-verde" onclick="navigator.clipboard.writeText(this.closest('.card').querySelector('.roteiro-box').textContent).then(()=>alert('Copiado!'))">Copiar</button></div><div class="card-body"><div class="roteiro-box">${texto}</div></div></div>`;
+
+// PERFIL FÁBIO (base para todos os roteiros)
+const PERFIL = `
+PERFIL DO CRIADOR — @vemcomofabio (Fábio Mendes)
+• 2,2 milhões de seguidores Instagram | 1,8M Facebook
+• Cresceu de 0 a 1 MILHÃO em apenas 5 meses
+• Ex-atleta olímpico (ginástica artística)
+• Ex-CLT — saiu do emprego para o digital
+• Pai da Elora e Cecília
+• Produtos: React Viral (R$97) | Guia dos Vídeos Lucrativos | Vídeos sem Aparecer
+• Público: 75% mulheres brasileiras, 25-45 anos, querem renda online
+• Tom: empolgado, próximo, autêntico, gesticula muito, sorriso genuíno
+`;
+
+const AIDA_GUIDE = `
+FRAMEWORK AIDA OBRIGATÓRIO:
+A — ATENÇÃO (0-3s): Hook que para o scroll. Nunca comece com "oi" ou apresentação.
+    Use: choque, contradição, número específico, pergunta irresistível, identidade do público
+I — INTERESSE (3-20s): Desenvolve com informação valiosa. Loops abertos "e daqui a pouco..."
+D — DESEJO (20-45s): Conecta com o sonho/dor do seguidor. Mostra resultado possível.
+A — AÇÃO (45-60s): CTA natural, nunca forçado. Integra produto se houver.
+
+REGRAS DE COPY PROFISSIONAL:
+• Específico > genérico (127 alunos, não "centenas")
+• Verbo de ação + benefício + tempo ("Cresça 100k em 90 dias")  
+• Objeção antecipada e destruída
+• Prova > promessa
+• Tom de amigo empolgado que descobriu algo incrível
+`;
+
+// ═══════════════════════════════════════════
+// ROTEIRO VIRAL (modal)
+// ═══════════════════════════════════════════
+async function gerarRoteiroViral() {
+  if(!viralAtual) return;
+  const div = document.getElementById('mv-roteiro');
+  div.innerHTML = '<div class="loading"><div class="spinner"></div><br>Aplicando AIDA...</div>';
+
+  const texto = await claude(`
+Você é copywriter profissional especializado em Reels virais para Instagram.
+${PERFIL}
+${AIDA_GUIDE}
+
+VÍDEO DE REFERÊNCIA:
+Plataforma: ${viralAtual.plataforma}
+Criador: @${viralAtual.username}
+Legenda: ${viralAtual.legenda}
+
+Crie o roteiro COMPLETO usando AIDA:
+
+⚡ GANCHO (A — Atenção, 0-3s)
+[3 opções de hook — escolha o mais forte]
+
+📈 DESENVOLVIMENTO (I — Interesse, 3-20s)
+[fala por fala com loop aberto]
+
+💫 VIRADA (D — Desejo, 20-45s)
+[conecta com história do Fábio ou resultado]
+
+🎯 CTA (A — Ação, 45-60s)
+[natural, não forçado]
+
+📱 LEGENDA PRONTA
+[com emojis e hashtags]
+
+🎬 DICA CAPCUT
+[corte/efeito específico]
+`);
+
+  if(!texto) return;
+  div.innerHTML = `
+    <div class="copy-section">
+      <div class="copy-label">Roteiro com AIDA</div>
+      <div class="copy-box">${texto.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+    </div>
+    <button class="btn btn-verde" onclick="navigator.clipboard.writeText(document.querySelector('.copy-box').innerText).then(()=>alert('Copiado!'))">
+      📋 Copiar roteiro completo
+    </button>`;
 }
-function salvarChave(){
-  const chave=document.getElementById('input-key').value.trim();
+
+// ═══════════════════════════════════════════
+// COPY COM AIDA (3 abas)
+// ═══════════════════════════════════════════
+async function gerarCopy(tipo) {
+  let prompt, divId;
+
+  if(tipo==='reel') {
+    const t = document.getElementById('tipo-reel').value;
+    const tema = document.getElementById('tema-reel').value.trim();
+    const prod = document.getElementById('prod-reel').value;
+    if(!tema){alert('Digite o tema!');return;}
+    divId = 'resultado-reel';
+    const tipos = {A:'React com virada pessoal',B:'Talking head — câmera no rosto',C:'Prova social — resultado',D:'React ensinando com autoridade'};
+    prompt = `
+Você é copywriter profissional de Reels virais.
+${PERFIL}
+${AIDA_GUIDE}
+TIPO: ${t} — ${tipos[t]}
+TEMA: ${tema}
+PRODUTO: ${prod||'nenhum — conteúdo puro'}
+
+Entregue:
+🎯 ANÁLISE ESTRATÉGICA (framework + emoção dominante)
+⚡ 3 OPÇÕES DE HOOK (A — Atenção, escolha o melhor)
+🎬 ROTEIRO COMPLETO fala por fala com tempo [0-3s][3-15s][15-35s][35-50s][50-60s]
+   Para cada parte: fala exata + gesto/expressão + técnica AIDA usada
+📱 LEGENDA PRONTA com emojis e hashtags
+🎬 DICA CAPCUT específica
+📊 POR QUE VAI VIRALIZAR (previsão de performance)`;
+  }
+  else if(tipo==='stories') {
+    const obj = document.getElementById('obj-stories').value;
+    const tema = document.getElementById('tema-stories').value.trim();
+    const num  = document.getElementById('num-stories').value;
+    if(!tema){alert('Digite o tema!');return;}
+    divId = 'resultado-stories';
+    const objs = {conexao:'Conexão e humanização',autoridade:'Autoridade e posicionamento',aquecimento:'Aquecimento para venda',conversao:'Conversão direta',engajamento:'Engajamento e DMs'};
+    prompt = `
+Você é especialista em storytelling para Instagram Stories.
+${PERFIL}
+${AIDA_GUIDE}
+OBJETIVO: ${objs[obj]}
+TEMA: ${tema}
+NÚMERO: ${num} stories
+
+Crie a sequência com CLIFFHANGER entre cada story:
+Para cada story: visual/cena + texto na tela (máx 1 frase) + fala (se tiver) + elemento interativo + gancho para o próximo
+
+Entregue:
+🎯 ESTRATÉGIA (framework + emoção + ponto de virada)
+📱 SEQUÊNCIA COMPLETA (${num} stories detalhados)
+🔄 LOOP DE CURIOSIDADE (como criar vício)
+💡 DICAS DE PRODUÇÃO (iluminação, filtro, horário)`;
+  }
+  else {
+    const prod  = document.getElementById('prod-cri').value;
+    const ang   = document.getElementById('angulo-cri').value;
+    const prova = document.getElementById('prova-cri').value;
+    divId = 'resultado-criativo';
+    const angs = {dor:'Foca na dor do público',sonho:'Foca no resultado desejado',medo:'Quebra objeção principal',prova:'Prova social com resultado',urgencia:'Urgência com prazo ou vagas'};
+    prompt = `
+Você é especialista em copywriting de resposta direta.
+${PERFIL}
+${AIDA_GUIDE}
+PRODUTO: ${prod}
+ÂNGULO: ${angs[ang]}
+PROVA DISPONÍVEL: ${prova||'usar dados do Fábio (2,2M, 0→1M em 5 meses)'}
+
+Entregue:
+🎯 ESTRATÉGIA (ângulo + objeção destruída + gatilho principal)
+📊 3 HEADLINES para testar (A/B/C)
+🎬 ROTEIRO COMPLETO 60-90s (VSL curto)
+   [0-5s] Hook visual + fala
+   [5-20s] Problema/dor (emoção ativada)
+   [20-45s] Solução + mecanismo único
+   [45-70s] Prova + oferta + garantia
+   [70-90s] CTA direto
+📝 COPY DO ANÚNCIO (texto da legenda)
+🧪 TESTE A/B sugerido`;
+  }
+
+  const div = document.getElementById(divId);
+  div.innerHTML = '<div class="loading"><div class="spinner"></div><br>Aplicando AIDA...</div>';
+
+  const texto = await claude(prompt);
+  if(!texto) return;
+
+  const cores = {reel:'azul',stories:'roxo',criativo:'verde'};
+  const cor = cores[tipo] || 'azul';
+  div.innerHTML = `
+    <div class="copy-section">
+      <div class="copy-label">Copy com AIDA — ${tipo.toUpperCase()}</div>
+      <div class="copy-box ${cor}">${texto.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+    </div>
+    <button class="btn btn-${cor==='azul'?'primary':cor}" onclick="navigator.clipboard.writeText(this.previousElementSibling.querySelector('.copy-box').innerText).then(()=>alert('Copiado!'))">
+      📋 Copiar tudo
+    </button>`;
+}
+
+// ═══════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════
+function salvarChave() {
+  const chave = document.getElementById('input-key').value.trim();
   if(!chave){alert('Cole sua chave API!');return;}
-  apiKey=chave;localStorage.setItem('api_key',chave);
-  document.getElementById('key-status').textContent='✅ Chave salva!';
+  apiKey = chave;
+  localStorage.setItem('api_key', chave);
+  document.getElementById('key-status').textContent = '✅ Chave salva!';
   setTimeout(()=>document.getElementById('key-status').textContent='',3000);
 }
-if(apiKey)document.getElementById('input-key').value=apiKey;
-document.getElementById('modal-viral').addEventListener('click',e=>{if(e.target===document.getElementById('modal-viral'))fecharModal();});
+if(apiKey) document.getElementById('input-key').value = apiKey;
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+document.querySelectorAll('.modal-overlay').forEach(m=>{
+  m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');});
+});
+
 if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!window.navigator.standalone){
   const b=document.createElement('div');
   b.style.cssText='position:fixed;bottom:80px;left:16px;right:16px;background:linear-gradient(135deg,#4f8ef7,#a78bfa);color:#fff;padding:12px 16px;border-radius:12px;font-size:12px;z-index:300;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 20px rgba(79,142,247,.4)';
   b.innerHTML='<span>⚡ Instale o <b>Reactify</b>: Compartilhar → Tela de Início</span><button onclick="this.parentNode.remove()" style="background:none;border:none;color:#fff;font-size:18px;margin-left:8px">✕</button>';
   document.body.appendChild(b);
 }
+
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 renderVirais(viraisAtivos);
-</script></body></html>
+renderReact(viraisAtivos);
+</script>
+</body>
+</html>
