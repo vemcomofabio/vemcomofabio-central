@@ -1,7 +1,7 @@
 {
-  "name": "Central Vemcomofabio",
-  "short_name": "Vemcomofabio",
-  "description": "Central de conteudo - @vemcomofabio",
+  "name": "Reactify",
+  "short_name": "Reactify",
+  "description": "Sua Máquina de Virais — @vemcomofabio",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#0a0a0f",
