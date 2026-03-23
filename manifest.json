@@ -1,18 +1,25 @@
 {
-  "name": "Reactify",
-  "short_name": "Reactify",
-  "description": "Sua Máquina de Virais — @vemcomofabio",
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#0a0a0f",
-  "theme_color": "#4f8ef7",
-  "orientation": "portrait",
-  "icons": [
-    {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
+    "name": "Reactify",
+    "short_name": "Reactify",
+    "description": "Sua Maquina de Virais - @vemcomofabio",
+    "start_url": "/vemcomofabio-central/",
+    "scope": "/vemcomofabio-central/",
+    "display": "standalone",
+    "background_color": "#0a0a0f",
+    "theme_color": "#4f8ef7",
+    "orientation": "portrait",
+    "icons": [
+          {
+                  "src": "icon-192.png",
+                  "sizes": "192x192",
+                  "type": "image/png",
+                  "purpose": "any maskable"
+          },
+          {
+                  "src": "icon-512.png",
+                  "sizes": "512x512",
+                  "type": "image/png",
+                  "purpose": "any maskable"
+          }
+    ]
 }
